@@ -1,11 +1,22 @@
-import { View, Text } from 'react-native'
 import React from 'react'
 import { Tabs } from "expo-router"
+import Colors from "@/constants/Colors"
 
 const Layout = () => {
   return (
-    <Tabs>
-        
+    <Tabs screenOptions={{
+        tabBarActiveTintColor: Colors.primary,
+        tabBarLabelStyle: {
+            fontFamily: "Press2P",
+            fontSize: 7,
+        }
+    }}>
+        <Tabs.Screen
+            name="calendar"
+            options={{
+                tabBarLabel: "Calendar"
+            }}
+        />
     </Tabs>
   )
 }
