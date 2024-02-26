@@ -1,6 +1,7 @@
-import React from 'react'
-import { Tabs } from "expo-router"
-import Colors from "@/constants/Colors"
+import React from 'react';
+import { Tabs } from "expo-router";
+import Colors from "@/constants/Colors";
+import { Ionicons } from '@expo/vector-icons';
 
 const Layout = () => {
   return (
@@ -8,15 +9,58 @@ const Layout = () => {
         tabBarActiveTintColor: Colors.primary,
         tabBarLabelStyle: {
             fontFamily: "Press2P",
-            fontSize: 7,
-        }
+            fontSize: 8,
+        },
+        headerShown: false,
+        
     }}>
         <Tabs.Screen
             name="calendar"
             options={{
-                tabBarLabel: "Calendar"
+                tabBarLabel: "Calendar",
+                tabBarIcon: ({ color, size }) => 
+                    <Ionicons name="calendar"color={color} size={size}/>
+
             }}
         />
+        
+        <Tabs.Screen
+            name="myList"
+            options={{
+                tabBarLabel: "My Tasks",
+                tabBarIcon: ({ color, size }) =>
+                    <Ionicons name="list" color={color} size={size}/> 
+
+            }}
+        />
+        
+        <Tabs.Screen
+            name="index"
+            options={{
+                tabBarLabel: "Home",
+                tabBarIcon: ( { color , size }) => 
+                <Ionicons name="home" color={color} size={size}/> 
+            }}
+        />
+                <Tabs.Screen
+            name="friends"
+            options={{
+                tabBarLabel: "Friends",
+                tabBarIcon: ({ color, size }) =>
+                    <Ionicons name="people" color={color} size={size}/>
+            }}
+        />
+
+                <Tabs.Screen
+            name="activities/activity"
+            options={{
+                tabBarLabel: ".",
+                tabBarIcon: ({ color, size}) =>
+                    <Ionicons name="bulb" color={color} size={size}/>,
+                    href: null,
+            }}
+        />
+
     </Tabs>
   )
 }
