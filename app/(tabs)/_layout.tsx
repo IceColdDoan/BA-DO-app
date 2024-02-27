@@ -52,12 +52,11 @@ const Layout = () => {
         />
 
                 <Tabs.Screen
-            name="activities/activity"
+            name="activity"
             options={{
-                tabBarLabel: ".",
+                tabBarLabel: "Activity",
                 tabBarIcon: ({ color, size}) =>
                     <Ionicons name="bulb" color={color} size={size}/>,
-                    href: null,
             }}
         />
 

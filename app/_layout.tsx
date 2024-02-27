@@ -1,8 +1,10 @@
+import { Ionicons } from '@expo/vector-icons';
 import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
+import { Stack, router } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
-
+import { Modal, TouchableOpacity } from 'react-native';
+import { Header } from 'react-native/Libraries/NewAppScreen';
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -45,6 +47,29 @@ function RootLayoutNav() {
   return (
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen 
+        name="(modals)/login" 
+        options={{
+          presentation: "modal",
+          title: "Log in Or Sign Up",
+          headerTitleStyle: {
+            fontFamily: "Press2P",
+            fontSize: 15,
+          },
+          animation: "slide_from_bottom",
+          headerTitleAlign: "center",
+          headerLeft: () => (
+            <TouchableOpacity onPress={router.back}>
+              <Ionicons name="close-outline" size={20}></Ionicons>
+            </TouchableOpacity>
+          )
+        }}
+        /> 
+        <Stack.Screen name="(activities)/[id]" 
+        options={{
+          title: "deez"
+        }}
+        />
       </Stack>
   );
 }
