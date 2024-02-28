@@ -7,31 +7,57 @@ import { Modal, TouchableOpacity } from 'react-native';
 import { Header } from 'react-native/Libraries/NewAppScreen';
 import * as SecureStore from "expo-secure-store";
 import { ClerkProvider, useAuth } from '@clerk/clerk-expo';
-import { SignIn } from '@clerk/clerk-react';
+import AsyncStorage  from '@react-native-async-storage/async-storage';
+import { TokenCache } from '@clerk/clerk-expo/dist/cache';
+import { Platform } from 'react-native';
 
 const CLERK_PUBLISHER_KEY = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
 
-const tokenCache = {
-  async getToken(key: string) {
-    try {
-      return SecureStore.getItemAsync(key);
-    } 
-    catch (err) {
-      return null;
-    }
-  },
+let tokenCache: TokenCache;
 
-  async saveToken(key: string, value: string) {
-    try {
-      return SecureStore.setItemAsync(key, value);
-    }
-    catch (err) {
-      return;
-    }
-  },
+if (Platform.OS === "ios" || Platform.OS === "android") {
+  tokenCache = {
+    async getToken(key: string) {
+      try {
+        return SecureStore.getItemAsync(key);
+      } 
+      catch (err) {
+        return null;
+      }
+    },
+  
+    async saveToken(key: string, value: string) {
+      try {
+        return SecureStore.setItemAsync(key, value);
+      }
+      catch (err) {
+        return;
+      }
+    },
+  }  
 }
 
-
+else {
+  tokenCache = {
+    async getToken(key: string) {
+      try {
+        return AsyncStorage.getItem(key);
+      }
+      catch (err) {
+        return null;
+      }
+    },
+  
+    async saveToken(key: string, value: string) {
+      try {
+        return AsyncStorage.setItem(key, value);
+      }
+      catch (err) {
+        return;
+      }
+    },
+  }  
+}
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -48,7 +74,7 @@ SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const [loaded, error] = useFonts({
-    "Press2P": require('../assets/fonts/PressStart2P-Regular.ttf')
+    "Press2P": require('@/assets/fonts/PressStart2P-Regular.ttf')
   });
 
   // Expo Router uses Error Boundaries to catch errors in the navigation tree.
@@ -67,7 +93,7 @@ export default function RootLayout() {
   }
 
   return (
-    <ClerkProvider publishableKey={ CLERK_PUBLISHER_KEY! } tokenCache={tokenCache}>
+    <ClerkProvider publishableKey={ CLERK_PUBLISHER_KEY! } tokenCache={tokenCache }>
       <RootLayoutNav />
     </ClerkProvider>
   );
