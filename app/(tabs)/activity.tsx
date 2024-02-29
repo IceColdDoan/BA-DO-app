@@ -6,7 +6,7 @@ import { useAuth } from '@clerk/clerk-expo';
 
 const activity = () => {
   const { isSignedIn, signOut } = useAuth();
-
+  
   return (
     <View>
       <Pressable onPress={() => signOut}> 

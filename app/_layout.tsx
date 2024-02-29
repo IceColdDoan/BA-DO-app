@@ -3,7 +3,7 @@ import { useFonts } from 'expo-font';
 import { Stack, router, useRouter } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
-import { Modal, TouchableOpacity } from 'react-native';
+import { Modal, Pressable, TouchableOpacity } from 'react-native';
 import { Header } from 'react-native/Libraries/NewAppScreen';
 import * as SecureStore from "expo-secure-store";
 import { ClerkProvider, useAuth } from '@clerk/clerk-expo';
@@ -66,7 +66,7 @@ export {
 
 export const unstable_settings = {
   // Ensure that reloading on `/modal` keeps a back button present.
-  initialRouteName: '(tabs)',
+  initialRouteName: '(tabs)/index',
 };
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
@@ -112,15 +112,16 @@ function RootLayoutNav() {
           title: "Log in Or Sign Up",
           headerTitleStyle: {
             fontFamily: "Press2P",
-            fontSize: 15,
+            fontSize: 13,
           },
           animation: "slide_from_bottom",
           headerTitleAlign: "center",
           headerLeft: () => (
-            <TouchableOpacity onPress={router.back}>
+            <Pressable onPress={router.back} style={ {marginLeft: 5} }>
               <Ionicons name="close-outline" size={20}></Ionicons>
-            </TouchableOpacity>
-          )
+            </Pressable>
+          ),
+          
         }}
         /> 
         <Stack.Screen name="(activities)/[id]" 
