@@ -3,12 +3,13 @@ import React from 'react';
 import { Link, router } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import { useAuth } from '@clerk/clerk-expo';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const activity = () => {
   const { isSignedIn, signOut } = useAuth();
   
   return (
-    <View>
+    <SafeAreaView>
       <Pressable onPress={() => signOut}> 
         <Text>
           Sign Out  
@@ -19,7 +20,7 @@ const activity = () => {
       )}
       
       <Link href="/(activities)/chicken"> My activities </Link>
-    </View>
+    </SafeAreaView>
   )
 }
 

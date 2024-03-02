@@ -66,7 +66,7 @@ export {
 
 export const unstable_settings = {
   // Ensure that reloading on `/modal` keeps a back button present.
-  initialRouteName: '(tabs)/index',
+  initialRouteName: "(tabs)",
 };
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
@@ -93,7 +93,7 @@ export default function RootLayout() {
   }
 
   return (
-    <ClerkProvider publishableKey={ CLERK_PUBLISHER_KEY! } tokenCache={tokenCache }>
+    <ClerkProvider publishableKey={ CLERK_PUBLISHER_KEY! } tokenCache={ tokenCache }>
       <RootLayoutNav/>
     </ClerkProvider>
   );
@@ -104,7 +104,7 @@ function RootLayoutNav() {
 
   return (
       <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen name="(tabs)" options={{ headerShown: false,  }} />
         <Stack.Screen 
         name="(modals)/login" 
         options={{

@@ -1,11 +1,25 @@
 import { View, Text, Pressable, StyleSheet, TextInput } from 'react-native'
 import React from 'react'
-import { useAuth } from '@clerk/clerk-expo'
+import { useAuth, useOAuth } from '@clerk/clerk-expo'
 import { Link } from 'expo-router';
 import Colors from '@/constants/Colors';
 import { Ionicons } from '@expo/vector-icons';
 
+enum Strategy {
+  Google = "oauth_google",
+  Facebook = "oauth_facebook",
+  Instagram = "oauth_instagram",
+}
+
 const login = () => {
+
+  const { startOAuthFlow: facebookAuth } = useOAuth({strategy: 'oauth_facebook'})
+  const { startOAuthFlow: googleAuth } = useOAuth({strategy: 'oauth_google'})
+  const { startOAuthFlow: instagramAuth} = useOAuth({strategy: 'oauth_instagram'})
+
+  const onSelectAuth = async (strategy: Strategy) => {
+    
+  }
 
   return (
     <View style={ styles.container }>
@@ -25,32 +39,35 @@ const login = () => {
       </View>
       
       <View>
-        <Text style={{alignSelf: "center", fontWeight: "bold"}}>OR</Text>
+        <Text style={{alignSelf: "center", fontWeight: "bold", marginBottom: 15}}>OR</Text>
       </View>
 
-      <View>
+      <View style={{gap: 10}  }>
         
         <Pressable style={styles.btnBox}>
-          <Ionicons name="call-outline" style={styles.btnBoxIcon}/>
-          <Text style={{alignSelf: "center"}}>
+          <Ionicons name="call-outline" style={styles.btnBoxIcon} size={15}/>
+          <Text style={{fontWeight: "600"}}>
             Continue with Phone
           </Text>
         </Pressable>
         
         <Pressable style={styles.btnBox}>
-          <Text>
+          <Ionicons name="logo-facebook" style={styles.btnBoxIcon} size={15}/>
+          <Text style={{fontWeight: "600"}}>
             Continue with Facebook
           </Text>
         </Pressable>
 
         <Pressable style={styles.btnBox}>
-          <Text>
+          <Ionicons name="logo-instagram" style={styles.btnBoxIcon} size={15}/>
+          <Text style={{fontWeight: "600"}}>
             Continue with Instagram
           </Text>
         </Pressable>
 
         <Pressable style={styles.btnBox}>
-          <Text>
+          <Ionicons name="logo-google" style={styles.btnBoxIcon} size={18}/>
+          <Text style={{fontWeight: "600"}}>
             Continue with Gmail
           </Text>
         </Pressable>
@@ -92,10 +109,14 @@ const styles = StyleSheet.create({
     borderBlockColor: Colors.dark,
     padding: 10,
     marginBottom: 10,
+    justifyContent: "center",
+    alignItems: "center",
   },
 
   btnBoxIcon: {
-    alignSelf: "center"
+    position: "absolute",
+    left: 16,
+
   }
   
 })
