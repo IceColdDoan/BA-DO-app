@@ -11,7 +11,6 @@ const Layout = () => {
             fontFamily: "Press2P",
             fontSize: 8,
         },
-        headerShown: false,
         
     }}>
         <Tabs.Screen

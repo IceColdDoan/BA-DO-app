@@ -1,7 +1,7 @@
 import { View, Text, Pressable, StyleSheet, TextInput } from 'react-native'
 import React from 'react'
 import { useAuth, useOAuth } from '@clerk/clerk-expo'
-import { Link } from 'expo-router';
+import { Link, useRouter } from 'expo-router';
 import Colors from '@/constants/Colors';
 import { Ionicons } from '@expo/vector-icons';
 
@@ -13,12 +13,29 @@ enum Strategy {
 
 const login = () => {
 
+  const Router = useRouter();
   const { startOAuthFlow: facebookAuth } = useOAuth({strategy: 'oauth_facebook'})
   const { startOAuthFlow: googleAuth } = useOAuth({strategy: 'oauth_google'})
   const { startOAuthFlow: instagramAuth} = useOAuth({strategy: 'oauth_instagram'})
 
   const onSelectAuth = async (strategy: Strategy) => {
-    
+    const selectAuth = {
+      [Strategy.Google]: googleAuth,
+      [Strategy.Facebook]: facebookAuth,
+      [Strategy.Instagram]: instagramAuth,
+    } [strategy];
+
+    try {
+      const { createdSessionId, setActive } = await selectAuth()
+
+      if (createdSessionId) {
+        setActive!({session: createdSessionId})
+        Router.back;
+      }
+    }
+    catch (err) {
+      console.log("Oauth error");
+    }
   }
 
   return (
@@ -51,21 +68,21 @@ const login = () => {
           </Text>
         </Pressable>
         
-        <Pressable style={styles.btnBox}>
+        <Pressable style={styles.btnBox} onPress={() => onSelectAuth(Strategy.Facebook)}>
           <Ionicons name="logo-facebook" style={styles.btnBoxIcon} size={15}/>
           <Text style={{fontWeight: "600"}}>
             Continue with Facebook
           </Text>
         </Pressable>
 
-        <Pressable style={styles.btnBox}>
+        <Pressable style={styles.btnBox} onPress={() => onSelectAuth(Strategy.Instagram)}>
           <Ionicons name="logo-instagram" style={styles.btnBoxIcon} size={15}/>
           <Text style={{fontWeight: "600"}}>
             Continue with Instagram
           </Text>
         </Pressable>
 
-        <Pressable style={styles.btnBox}>
+        <Pressable style={styles.btnBox} onPress={() => onSelectAuth(Strategy.Google)}>
           <Ionicons name="logo-google" style={styles.btnBoxIcon} size={18}/>
           <Text style={{fontWeight: "600"}}>
             Continue with Gmail
