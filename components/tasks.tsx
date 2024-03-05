@@ -5,12 +5,12 @@ import { Ionicons } from '@expo/vector-icons'
 import Colors from '@/constants/Colors'
 
 const possibleTasks = [
-  "take a cold shower",
-  "go on a 15 min jog",
-  "crank out 20 push ups",
-  "learn a fun fact",
-  "meditate for 20 mins",
-  "read a book for 20 mins",
+  "Take a cold shower",
+  "Go on a 15 min jog",
+  "Crank out 20 push ups",
+  "Learn a fun fact",
+  "Meditate for 20 mins",
+  "Read a book for 20 mins",
 ]
 
 const switchIndex = (myArray: string[], index: number): string[] => {
@@ -28,9 +28,9 @@ const generateAllTasks = () => {
   for (let i = 0; i < 5; i++) {
     let index = Math.floor(Math.random() * cpyTasks.length)
     let task = cpyTasks[index] 
-    tasks.push(<View style={{flexDirection: "row",}}>
-                  <Pressable>
-                    <Ionicons name="square-outline"/>
+    tasks.push(<View key={i+10} style={{flexDirection: "row", alignItems: "center" }}>
+                  <Pressable key={i+5}>
+                    <View style={styles.btn}/>
                   </Pressable>
                   <Text style={styles.texts} key={i}>{task}</Text>
               </View>)  
@@ -43,8 +43,9 @@ const generateAllTasks = () => {
 
 const tasks = () => {
   const generatedTasks = generateAllTasks()
+
   return (
-    <View style={{gap: 100, alignItems: "center"}}>
+    <View style={{gap: 100, alignItems: "center", }}>
       {generatedTasks}
     </View>
   )
@@ -59,7 +60,10 @@ const styles = StyleSheet.create({
   },
 
   btn: {
-    
+    borderRadius: 3,
+    borderWidth: 5,
+    alignSelf: "center",
+    backgroundColor: "white"
   }
 })
 
