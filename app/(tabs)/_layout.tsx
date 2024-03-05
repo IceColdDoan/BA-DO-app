@@ -12,6 +12,7 @@ const Layout = () => {
             fontSize: 8,
         },
         
+        
     }}>
         <Tabs.Screen
             name="calendar"

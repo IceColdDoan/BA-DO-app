@@ -3,6 +3,9 @@ import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Stack } from 'expo-router';
 import HomeHeader from '@/components/homeHeader';
+import Tasks from '@/components/tasks';
+
+
 
 const index = () => {
   return (
@@ -10,6 +13,7 @@ const index = () => {
       <Stack.Screen options={{
         header: () => <HomeHeader/>
       }}/>
+      <Tasks/>
     </SafeAreaView>
   )
 }

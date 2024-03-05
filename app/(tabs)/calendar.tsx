@@ -5,7 +5,9 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 const calendar = () => {
   return (
     <SafeAreaView>
-      <Text>calendar</Text>
+      <Text>
+        calendar
+      </Text>
     </SafeAreaView>
   )
 }
