@@ -1,10 +1,8 @@
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, Pressable } from 'react-native'
 import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
-
-type todoTasks = {
-  name: string;
-};
+import { Ionicons } from '@expo/vector-icons'
+import Colors from '@/constants/Colors'
 
 const possibleTasks = [
   "take a cold shower",
@@ -30,7 +28,12 @@ const generateAllTasks = () => {
   for (let i = 0; i < 5; i++) {
     let index = Math.floor(Math.random() * cpyTasks.length)
     let task = cpyTasks[index] 
-    tasks.push(<Text key={i}>{task}</Text>)  
+    tasks.push(<View style={{flexDirection: "row",}}>
+                  <Pressable>
+                    <Ionicons name="square-outline"/>
+                  </Pressable>
+                  <Text style={styles.texts} key={i}>{task}</Text>
+              </View>)  
     switchIndex(cpyTasks, index)
     cpyTasks.pop()
   }
@@ -41,14 +44,23 @@ const generateAllTasks = () => {
 const tasks = () => {
   const generatedTasks = generateAllTasks()
   return (
-    <View>
+    <View style={{gap: 100, alignItems: "center"}}>
       {generatedTasks}
     </View>
   )
 }
 
 const styles = StyleSheet.create({
+  texts: {
+    marginLeft: 10,
+    fontFamily: 'Press2P',
+    fontSize: 15,
+    color: Colors.primary,
+  },
 
+  btn: {
+    
+  }
 })
 
 export default tasks
