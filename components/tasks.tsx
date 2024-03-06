@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet, Pressable } from 'react-native'
 import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { Ionicons } from '@expo/vector-icons'
+import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons'
 import Colors from '@/constants/Colors'
 
 const possibleTasks = [
@@ -28,9 +28,9 @@ const generateAllTasks = () => {
   for (let i = 0; i < 5; i++) {
     let index = Math.floor(Math.random() * cpyTasks.length)
     let task = cpyTasks[index] 
-    tasks.push(<View key={i+10} style={{flexDirection: "row", alignItems: "center" }}>
-                  <Pressable key={i+5}>
-                    <View style={styles.btn}/>
+    tasks.push(<View key={i+10} style={{flexDirection: "row", alignSelf: "baseline",}}>
+                  <Pressable key={i+5} onPress={() => <Text key={i} style={[styles.texts, ="line-through"]}/>}>
+                    <MaterialCommunityIcons name='square-outline' size={20}/>
                   </Pressable>
                   <Text style={styles.texts} key={i}>{task}</Text>
               </View>)  
@@ -45,7 +45,7 @@ const tasks = () => {
   const generatedTasks = generateAllTasks()
 
   return (
-    <View style={{gap: 100, alignItems: "center", }}>
+    <View style={{gap: 100, justifyContent: "center", }}>
       {generatedTasks}
     </View>
   )
