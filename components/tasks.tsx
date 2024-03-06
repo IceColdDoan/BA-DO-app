@@ -28,9 +28,9 @@ const generateAllTasks = () => {
   for (let i = 0; i < 5; i++) {
     let index = Math.floor(Math.random() * cpyTasks.length)
     let task = cpyTasks[index] 
-    tasks.push(<View key={i+10} style={{flexDirection: "row", alignSelf: "baseline",}}>
-                  <Pressable key={i+5} onPress={() => <Text key={i} style={[styles.texts, ="line-through"]}/>}>
-                    <MaterialCommunityIcons name='square-outline' size={20}/>
+    tasks.push(<View key={i+10} style={{flexDirection: "row", alignSelf: "baseline", alignContent: "center"}}>
+                  <Pressable key={i+5}>
+                    <MaterialCommunityIcons name='square-outline' size={20} style={styles.btn}/>
                   </Pressable>
                   <Text style={styles.texts} key={i}>{task}</Text>
               </View>)  
@@ -61,7 +61,6 @@ const styles = StyleSheet.create({
 
   btn: {
     borderRadius: 3,
-    borderWidth: 5,
     alignSelf: "center",
     backgroundColor: "white"
   }
