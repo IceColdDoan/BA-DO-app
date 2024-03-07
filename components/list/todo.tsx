@@ -4,7 +4,9 @@ import React from 'react'
 const todo = () => {
   return (
     <View>
-      <Text>todo</Text>
+      <Text>
+        todo 
+      </Text>
     </View>
   )
 }
