@@ -1,28 +1,21 @@
 import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
+import headerStyle from '../headerStyle'
 
-const homeHeader = () => {
+const activityHeader = () => {
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.headerText}>
-        BA-DO! TASKS
+      <Text style={headerStyle}>
+        Calendar
       </Text>
     </SafeAreaView>
   )
 }
 
 const styles = StyleSheet.create({
-    container: {
-      alignItems: "center"
-    },
-
-    headerText: {
-        paddingTop: 10,
-        fontFamily: "Press2P",
-        fontSize: 20,
-    }
-     
+  container: {
+    alignItems: "center"
+  }
 })
-
-export default homeHeader;
+export default activityHeader

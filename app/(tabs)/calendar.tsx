@@ -1,13 +1,15 @@
 import { View, Text } from 'react-native';
 import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import CalendarHeader from "@/components/calendar/calendarHeader"
+import { Stack } from 'expo-router';
 
 const calendar = () => {
   return (
     <SafeAreaView>
-      <Text>
-        calendar
-      </Text>
+      <Stack.Screen options={{
+        header: () => <CalendarHeader/>
+      }}/>
     </SafeAreaView>
   )
 }
