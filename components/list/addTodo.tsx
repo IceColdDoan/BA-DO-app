@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Pressable } from 'react-native'
+import { View, Text, StyleSheet, Pressable, ScrollView } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 import Colors from '@/constants/Colors'
@@ -9,8 +9,10 @@ const addTodo = () => {
   const [clicked, setClick] = useState(false)
 
   return (
-    <View style={styles.container}>
-      {[...Array(numTask)].map((_, i) => <Todo key={i}/>)}
+    <ScrollView style={styles.container}>
+      <View style={{flexDirection: "row", flexWrap: "wrap"}}>
+        {[...Array(numTask)].map((_, i) => <Todo key={i}/>)}
+      </View>
       <Pressable onPress={() => {
         setNumTask(numTask + 1); 
         setClick(true);
@@ -25,7 +27,7 @@ const addTodo = () => {
             Add A Todo Task!
         </Text>
       </Pressable>
-    </View>
+    </ScrollView>
   )
 }
 
@@ -37,8 +39,9 @@ const styles = StyleSheet.create({
     mainBtn: {
         flexDirection: "row",
         alignItems: "center",
-        paddingLeft: 10,
-        justifyContent: "center"
+        justifyContent: "center",
+        paddingBottom: 10,
+
     },
 
     text: {
