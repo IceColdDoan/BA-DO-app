@@ -10,6 +10,7 @@ import { ClerkProvider, useAuth } from '@clerk/clerk-expo';
 import AsyncStorage  from '@react-native-async-storage/async-storage';
 import { TokenCache } from '@clerk/clerk-expo/dist/cache';
 import { Platform } from 'react-native';
+import TaskScreen from "@/components/list/todo";
 
 const CLERK_PUBLISHER_KEY = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
 
@@ -104,29 +105,40 @@ function RootLayoutNav() {
 
   return (
       <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false,  }} />
         <Stack.Screen 
-        name="(modals)/login" 
-        options={{
-          presentation: "modal",
-          title: "Log in Or Sign Up",
-          headerTitleStyle: {
-            fontFamily: "Press2P",
-            fontSize: 13,
+          name="(tabs)" 
+          options={{ headerShown: false,  }} 
+        />
+        
+        <Stack.Screen 
+          name="(modals)/login" 
+          options={{
+            presentation: "modal",
+            title: "Log in Or Sign Up",
+            headerTitleStyle: {
+              fontFamily: "Press2P",
+              fontSize: 13,
           },
-          animation: "slide_from_bottom",
-          headerTitleAlign: "center",
-          headerLeft: () => (
-            <Pressable onPress={router.back} style={ {marginLeft: 5} }>
-              <Ionicons name="close-outline" size={20}></Ionicons>
-            </Pressable>
+            animation: "slide_from_bottom",
+            headerTitleAlign: "center",
+            headerLeft: () => (
+              <Pressable onPress={router.back} style={ {marginLeft: 5} }>
+                <Ionicons name="close-outline" size={20}></Ionicons>
+              </Pressable>
           ),
           
         }}
         /> 
         <Stack.Screen name="(activities)/[id]" 
+          options={{
+            title: "deez"
+        }}
+        />
+        <Stack.Screen name="(modals)/dragScreen" 
         options={{
-          title: "deez"
+          headerShown: false,
+          presentation: "transparentModal",
+          animation: "fade"
         }}
         />
       </Stack>

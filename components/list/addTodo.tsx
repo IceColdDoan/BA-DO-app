@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 import Colors from '@/constants/Colors'
 import Todo from "@/components/list/todo"
+import { Link } from 'expo-router'
 
 const addTodo = () => {
   const [numTask, setNumTask] = useState(0); 
@@ -20,7 +21,6 @@ const addTodo = () => {
           setClick(false);
         }, 100);
       }}
-      
         style={styles.mainBtn}>
         <MaterialCommunityIcons style={{fontSize: 20}} name={clicked ? "checkbox-blank-circle" : 'checkbox-blank-circle-outline'}/>
         <Text style={styles.text}>
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "center",
-        paddingBottom: 10,
+        paddingBottom: 20,
 
     },
 

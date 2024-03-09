@@ -42,7 +42,7 @@ const Layout = () => {
                 <Ionicons name="home" color={color} size={size}/> 
             }}
         />
-                <Tabs.Screen
+        <Tabs.Screen
             name="friends"
             options={{
                 tabBarLabel: "Friends",
@@ -51,7 +51,7 @@ const Layout = () => {
             }}
         />
 
-                <Tabs.Screen
+        <Tabs.Screen
             name="activity"
             options={{
                 tabBarLabel: "Activity",
