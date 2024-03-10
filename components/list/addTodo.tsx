@@ -52,4 +52,4 @@ const styles = StyleSheet.create({
     },
 
 })
-export default addTodo
+export default addTodo;

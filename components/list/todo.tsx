@@ -1,11 +1,11 @@
-import { View, Text, TextInput, StyleSheet, ScrollView } from 'react-native'
-import React from 'react'
+import { View, Text, TextInput, StyleSheet, ScrollView, } from 'react-native'
+import React, { useState } from 'react'
 import Colors from '@/constants/Colors'
 import { Gesture, GestureDetector } from 'react-native-gesture-handler'
+import Animated from 'react-native-reanimated'
 
 const todo = () => {
 
-  const gesture = Gesture.Pan()
 
   return (
       <View style={styles.container}>
@@ -41,4 +41,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default todo
+export default todo;
