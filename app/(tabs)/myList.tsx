@@ -13,7 +13,6 @@ const myList = () => {
       }}/>
       <AddTodo/>
       <Link href="/(modals)/dragScreen"> TEST </Link>
-
     </SafeAreaView>
   )
 }

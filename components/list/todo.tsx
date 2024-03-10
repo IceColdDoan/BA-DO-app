@@ -1,19 +1,19 @@
-import { View, Text, TextInput, StyleSheet, ScrollView } from 'react-native'
-import React from 'react'
+import { View, Text, TextInput, StyleSheet, ScrollView, } from 'react-native'
+import React, { useState } from 'react'
 import Colors from '@/constants/Colors'
 import { Gesture, GestureDetector } from 'react-native-gesture-handler'
+import Animated from 'react-native-reanimated'
 
 const todo = () => {
 
-  const gesture = Gesture.Pan()
 
   return (
       <View style={styles.container}>
-        <GestureDetector gesture={gesture}>
           <View style={styles.card}>
-            <TextInput multiline={true} textAlignVertical="top" placeholder={'Input a task here! \n\n\n\n\nSwipe left to mark complete! \nSwipe right to delete!'}/>  
+            <View>
+              <TextInput multiline={true} textAlignVertical="top" placeholder={'Input a task here!'}/>  
+            </View>
           </View>
-        </GestureDetector> 
       </View>
   )
 }
@@ -43,4 +43,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default todo
+export default todo;

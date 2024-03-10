@@ -3,6 +3,7 @@ import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Stack } from 'expo-router';
 import FriendsHeader from "@/components/friends/friendsHeader"
+import Post from "@/components/friends/post"
 
 const friends = () => {
   return (
@@ -10,6 +11,7 @@ const friends = () => {
       <Stack.Screen options={{
         header: () => <FriendsHeader/>
       }}/>
+      <Post/>
     </SafeAreaView>
   )
 }
