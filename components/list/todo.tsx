@@ -9,11 +9,9 @@ const todo = () => {
 
   return (
       <View style={styles.container}>
-        <GestureDetector gesture={gesture}>
           <View style={styles.card}>
             <TextInput multiline={true} textAlignVertical="top" placeholder={'Input a task here! \n\n\n\n\nSwipe left to mark complete! \nSwipe right to delete!'}/>  
-          </View>
-        </GestureDetector> 
+          </View> 
       </View>
   )
 }
