@@ -11,6 +11,7 @@ import AsyncStorage  from '@react-native-async-storage/async-storage';
 import { TokenCache } from '@clerk/clerk-expo/dist/cache';
 import { Platform } from 'react-native';
 import TaskScreen from "@/components/list/todo";
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 const CLERK_PUBLISHER_KEY = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
 
@@ -94,9 +95,11 @@ export default function RootLayout() {
   }
 
   return (
-    <ClerkProvider publishableKey={ CLERK_PUBLISHER_KEY! } tokenCache={ tokenCache }>
-      <RootLayoutNav/>
-    </ClerkProvider>
+    <GestureHandlerRootView>
+      <ClerkProvider publishableKey={ CLERK_PUBLISHER_KEY! } tokenCache={ tokenCache }>
+        <RootLayoutNav/>
+      </ClerkProvider>
+    </GestureHandlerRootView>
   );
   
 }
