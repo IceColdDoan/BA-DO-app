@@ -3,6 +3,7 @@ import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import CalendarHeader from "@/components/calendar/calendarHeader"
 import { Stack } from 'expo-router';
+import Calendar from "@/components/calendar/calendar"
 
 const calendar = () => {
   return (
@@ -10,6 +11,7 @@ const calendar = () => {
       <Stack.Screen options={{
         header: () => <CalendarHeader/>
       }}/>
+      <Calendar/>
     </SafeAreaView>
   )
 }
