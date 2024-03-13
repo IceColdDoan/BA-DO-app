@@ -15,7 +15,7 @@ const calendar = () => {
     }
   };
 
-  const currentDate = new Date().toISOString().split('T')[0];
+  const currentDate = new Date().toISOString().split('T')[-1];
 
   return (
     <View>
